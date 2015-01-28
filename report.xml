@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?><testsuites><testsuite name="Node.js" failures="0" skipped="0" tests="1" time="0.006"><testsuite name="hello" failures="0" skipped="0" tests="1" time="0.004"><testcase name="greet" time="0" status="0"/></testsuite></testsuite></testsuites>

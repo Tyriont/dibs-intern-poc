@@ -3,24 +3,23 @@ define([
     'intern/chai!assert',
     'require'
 ], function (registerSuite, assert, require) {
-    
     var url = 'http://www.1stdibs.com';
     registerSuite({
         name: 'index',
 
-        'base page load test': function () {
+        'text test': function () {
             
             return this.remote
                 .get(url)
                 .setFindTimeout(5000)
                 .findByCssSelector('.currency-nav-label')
-                .text()
+                .getVisibleText()
                 .then(function (resultText) {
                     assert.equal(resultText, '$ USD',
                                  'When page loads without login, USD should display as default currency');
                 });
         },
-        'secondary test': function () {
+        'element visible test': function () {
             
             return this.remote
                 .get(url)
@@ -28,8 +27,30 @@ define([
                 .findByCssSelector('.logo-header .bunsen-icon-logo-1stdibs')
                     .isDisplayed()
                 .then(function (isDisplayedResult) {
-                    assert.isTrue(isDisplayedResult, 'the main logo is visible')
+                    assert.isTrue(isDisplayedResult, 
+                                  'the main logo is visible')
                 });
+        },
+        'chaining tests': function () {
+            return this.remote
+                .get(url)
+                .setFindTimeout(5000)
+                .findByCssSelector('[data-cat=furniture] .global-nav-item-link')
+                    .click()
+                    .end()
+                .findByCssSelector('.breadcrumbs-list .is-last')
+                .getVisibleText()
+                    .then(function (resultText) {
+                        assert.equal(resultText, 'Furniture',
+                                     'Furniture should display as the final item added to the breadcrumbs list')
+                    })
+                    .end()
+                .findByCssSelector('[data-title=Furniture]')
+                    .getVisibleText()
+                    .then(function (resultText) {
+                        assert.equal(resultText, 'FURNITURE',
+                                     'Furniture should display as the category header')
+                    });            
         }
     });
 });
