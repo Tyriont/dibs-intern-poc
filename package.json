@@ -1,0 +1,10 @@
+{
+  "name": "dibs-intern-poc",
+  "version": "0.0.1",
+  "description": "Intern poc test",
+  "homepage": "",
+  "devDependencies": {
+    "intern": "^2.2.2",
+    "leadfoot": "^1.2.1"
+  }
+}
