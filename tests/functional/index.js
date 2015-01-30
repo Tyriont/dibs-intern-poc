@@ -53,7 +53,7 @@ define([
                                      'Furniture should display as the category header');
                 });
         },
-        'search input test': function() {
+        'search input test': function () {
             return this.remote
                 .get(url)
                 .setFindTimeout(5000)
@@ -62,10 +62,10 @@ define([
                     .end()
                 .findByCssSelector('.results-header-title')
                     .getVisibleText()
-                .then(function(resultText){
+                .then(function (resultText) {
                     assert.include(resultText, 'results for "watch"',
                                    'the results header title should display "X results for "watch""');
-                })
+                });
         }
     });
 });
