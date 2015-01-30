@@ -15,22 +15,22 @@ define({
 	// Note that the `build` capability will be filled in with the current commit ID from the Travis CI environment
 	// automatically
 	capabilities: {
-		'selenium-version': '2.41.0'
+		'selenium-version': '2.44.0'
 	},
 
 	// Browsers to run integration testing against. Note that version numbers must be strings if used with Sauce
 	// OnDemand. Options that will be permutated are browserName, version, platform, and platformVersion; any other
 	// capabilities options specified for an environment will be copied as-is
 	environments: [
-        {browserName: 'safari'},
-        //{browserName: 'firefox'},
-        //{browserName: 'chrome'}
+        {browserName: 'firefox', version: '25'},
+        //{browserName: 'chrome'},
+        {browserName: 'safari', version: '8.0.2'}
 	],
 
 	// Maximum number of simultaneous integration tests that should be executed on the remote WebDriver service
 	maxConcurrency: 3,
     
-    reporters: [ 'pretty', 'lcov' ],
+    reporters: [ 'pretty', 'runner' ],
 
 	// Name of the tunnel class to use for WebDriver tests
 	tunnel: 'nullTunnel',
@@ -46,7 +46,6 @@ define({
 	// can be used here
 	loader: {
 		// Packages that should be registered with the loader in each testing environment
-		//packages: [ { name: 'app', location: 'app' } ]
 	},
     
     useSauceConnect: false,
