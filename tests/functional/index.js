@@ -9,7 +9,9 @@ define([
         name: 'index',
 
         'text test': function () {
-            
+            /*
+            When the homepage loads without a login, USD should display as the default currency
+            */
             return this.remote
                 .get(url)
                 .setFindTimeout(5000)
@@ -21,7 +23,9 @@ define([
                 });
         },
         'element visible test': function () {
-            
+            /*
+            When the homepage loads without a login, the main logo should be visible
+            */
             return this.remote
                 .get(url)
                 .setFindTimeout(5000)
@@ -33,6 +37,9 @@ define([
                 });
         },
         'chaining tests': function () {
+            /*
+            When the homepage loads without a login and the Furniture category is clicked, 'Furniture' should display as the final breadcrumb
+            */
             return this.remote
                 .get(url)
                 .setFindTimeout(5000)
@@ -54,6 +61,9 @@ define([
                 });
         },
         'search input test': function () {
+            /*
+            When the homepage loads without a login and 'watch' is entered into the search box and the enter button is pressed, the results header title should display 'X results for "watch"'
+            */
             return this.remote
                 .get(url)
                 .setFindTimeout(5000)
